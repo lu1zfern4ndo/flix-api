@@ -6,7 +6,6 @@ from .models import Genre
 
 
 @csrf_exempt
-@require_POST
 def genre_create_list(request):
     if request.method == 'GET':
         genres = Genre.objects.all()
