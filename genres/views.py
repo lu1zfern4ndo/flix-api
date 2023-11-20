@@ -19,6 +19,6 @@ def genre_create_list(request):
 
 
 def genre_detail(request, pk):
-    genre = get_object_or_404(Genre, pk=pk)
-    data = {'id': genre.id, 'name': genre.name}
-    return JsonResponse(data)
+    genre = Genre.objects.get(pk=pk)
+    return JsonResponse({'id': genre.id, 'name': genre.name})
+
