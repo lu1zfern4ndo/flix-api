@@ -1,5 +1,6 @@
 import json
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from .models import Genre
 
@@ -18,5 +19,6 @@ def genre_create_list(request):
 
 
 def genre_detail(request, pk):
-    genre = Genre.objects.get(pk=pk)
-    return JsonResponse({'id': genre.id, 'name': genre.name})
+    genre = get_object_or_404(Genre, pk=pk)
+    data = {'id': genre.id, 'name': genre.name}
+    return JsonResponse(data)
