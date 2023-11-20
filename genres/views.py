@@ -1,7 +1,6 @@
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
 from .models import Genre
 
 
@@ -16,3 +15,8 @@ def genre_create_list(request):
         new_genre = Genre(name=data.get('name'))
         new_genre.save()
         return JsonResponse({'id': new_genre.id, 'name': new_genre.name}, status=201)
+
+
+def genre_detail(request, pk):
+    genre = Genre.objects.get(pk=pk)
+    return JsonResponse({'id': genre.id, 'name': genre.name})
