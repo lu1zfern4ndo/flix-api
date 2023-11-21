@@ -29,3 +29,6 @@ def genre_detail_update_delete(request, pk):
         genre.name = data.get('name')
         genre.save()
         return JsonResponse({'id': genre.id, 'name': genre.name})
+    elif request.method == 'DELETE':
+        genre.delete()
+        return JsonResponse({'message': 'Gênero excluído com sucesso'}, status=204)
