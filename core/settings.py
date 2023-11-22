@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
 
-    'genres',
     'actors',
+    'genres',
+    'movies'
 ]
 
 MIDDLEWARE = [
